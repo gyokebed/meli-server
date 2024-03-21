@@ -7,6 +7,11 @@ const app = express();
 
 app.use(responseTransformer);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173"); 
+  next();
+});
+
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'))
   console.log('Morgan enabled...');

@@ -43,7 +43,7 @@ const transform = (body, req) => {
       ).url,
       condition: body.item.condition,
       free_shipping: body.item.shipping.free_shipping,
-      solid_quantity: body.item.initial_quantity,
+      sold_quantity: body.item.initial_quantity,
       description: body.description.plain_text,
     },
   };

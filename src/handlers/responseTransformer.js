@@ -19,7 +19,7 @@ const transform = (body, req) => {
         price: {
           currency: item.currency_id,
           amount: item.price,
-          // decimals: TODO
+          decimals: 2 
         },
         picture: item.thumbnail,
         condition: item.condition,
@@ -36,7 +36,7 @@ const transform = (body, req) => {
       price: {
         currency: body.item.currency_id,
         amount: body.item.price,
-        // decimals: TODO
+        decimals: 2
       },
       picture: body.item.pictures.find(
         (picture) => picture.id === body.item.thumbnail_id

@@ -3,11 +3,11 @@ import mung from 'express-mung';
 const author = {
   name: 'Gustavo',
   lastName: 'Carrillo',
-}
+};
 
 const transform = (body, req) => {
-
-  if (req.path == '/api/items') {
+  // Search results
+  if (req.path == '/') {
     return {
       author,
       categories: body.available_filters
@@ -19,7 +19,7 @@ const transform = (body, req) => {
         price: {
           currency: item.currency_id,
           amount: item.price,
-          decimals: 2 
+          decimals: 2,
         },
         picture: item.thumbnail,
         condition: item.condition,
@@ -28,6 +28,7 @@ const transform = (body, req) => {
     };
   }
 
+  // Product Detail
   return {
     author,
     item: {
@@ -36,7 +37,7 @@ const transform = (body, req) => {
       price: {
         currency: body.item.currency_id,
         amount: body.item.price,
-        decimals: 2
+        decimals: 2,
       },
       picture: body.item.pictures.find(
         (picture) => picture.id === body.item.thumbnail_id
